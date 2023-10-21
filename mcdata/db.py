@@ -24,6 +24,7 @@ def init_db():
     with current_app.open_resource('schema.sql') as f:
         for line in f:
             if line.strip():
+                #print(line.decode('utf8'))
                 cursor.execute(line.decode('utf8'))
 
 def init_app(app):
