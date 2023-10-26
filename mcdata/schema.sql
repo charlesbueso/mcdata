@@ -1,7 +1,0 @@
-SET sql_notes = 0;
-DROP TABLE IF EXISTS post;
-DROP TABLE IF EXISTS user;
-
-CREATE TABLE user (id INT NOT NULL, username varchar(255) UNIQUE NOT NULL, password varchar(255) NOT NULL, PRIMARY KEY (id));
-
-CREATE TABLE post (id INT NOT NULL AUTO_INCREMENT, author_id INT NOT NULL, created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, title varchar(255) NOT NULL, body varchar(255) NOT NULL, PRIMARY KEY (id), FOREIGN KEY (author_id) REFERENCES user (id));
