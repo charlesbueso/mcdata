@@ -28,6 +28,8 @@ def init_app(app):
     app.cli.add_command(init_db_command)
 
 def init_schema(db):
+    #cleans up collections, sets dataset and user
+
     collection_names = db.list_collection_names()
 
     if "user" in collection_names:
