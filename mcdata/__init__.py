@@ -1,14 +1,19 @@
 import os
-from flask import Flask, render_template, request, send_file
+from .config import config
+from flask import Flask, render_template, request, send_file, g, redirect
+from .dataset import Dataset
 
+ALLOWED_EXTENSIONS={'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'), #TODO: the fuck?
-        UPLOAD_FOLDER = "/folder_for_uploads",
     )
 
     if test_config is None:
@@ -29,12 +34,24 @@ def create_app(test_config=None):
     def main():
         return render_template("index.html")
 
-    @app.route('/success', methods = ['POST'])   
-    def success():   
-        if request.method == 'POST':   
+    @app.route('/datasetuploaded', methods = ['POST'])   
+    def datasetuploaded():   
+        if request.method == 'POST':
+            # check if the post request has file
+            if 'file' not in request.files:
+                return redirect('/')
+            
             f = request.files['file'] 
-            f.save(app.config['UPLOAD_FOLDER'], f.filename)   
-            return render_template("upload_success.html", name = f.filename)
+
+            if f.filename == '':
+                return redirect('/')
+
+            # check allowed file
+            if f and allowed_file(f.filename):
+
+                Dataset.uploadDataset(f)
+
+                return render_template("datasetuploaded.html", name = f.filename)
     
     from . import db
     db.init_app(app)

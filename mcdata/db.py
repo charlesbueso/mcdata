@@ -8,7 +8,6 @@ def get_db():
     if 'db' not in g:
         client = MongoClient(config['host'], config['port_number']) 
         g.db = client[config['database']] 
-        print("connected")
 
     return g.db
 
