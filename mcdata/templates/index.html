@@ -1,11 +1,59 @@
-<html>   
-<head>   
-    <title>upload the file : GFG</title>   
-</head>   
-<body>   
-    <form action = "/datasetuploaded" method = "post" enctype="multipart/form-data">   
-        <input type="file" name="file" />   
-        <input type = "submit" value="Upload">   
-    </form>   
-</body>   
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mcdata</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 500px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .create-account-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ccc;
+            color: #000;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/datasetuploaded" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" value="Upload Dataset">
+        <button class="create-account-button">Create Account</button>
+    </form>
+    
+    <form action="/searchresults" method="post" enctype="multipart/form-data">
+        <input type="text" name="search_input" class="search-bar" placeholder="Search Datasets...">
+        <input type="submit" value="Search">
+    </form>
+</body>
 </html>
