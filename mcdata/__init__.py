@@ -1,7 +1,8 @@
 import os
-from .config import config
 from flask import Flask, render_template, request, send_file, g, redirect
+from .config import config
 from .dataset import Dataset
+from .search import search_database
 
 ALLOWED_EXTENSIONS={'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
@@ -30,11 +31,11 @@ def create_app(test_config=None):
         pass
 
     # Homepage
-    @app.route('/')
+    @app.route('/', methods=['GET', 'POST'])
     def main():
         return render_template("index.html")
 
-    @app.route('/datasetuploaded', methods = ['POST'])   
+    @app.route('/datasetuploaded', methods=['POST'])   
     def datasetuploaded():   
         if request.method == 'POST':
             # check if the post request has file
@@ -53,6 +54,15 @@ def create_app(test_config=None):
 
                 return render_template("datasetuploaded.html", name = f.filename)
     
+    @app.route('/searchresults', methods=['POST'])
+    def search():
+
+        if request.method == 'POST':
+
+            search_input = request.form.get("search_input")
+
+        return render_template('searchresults.html', search_results=search_database(search_input))
+
     from . import db
     db.init_app(app)
 
