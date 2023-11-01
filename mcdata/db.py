@@ -35,9 +35,9 @@ def init_schema(db):
         db["user"].drop()
     db.create_collection("user")
 
-    if "dataset" in collection_names:
-        db["dataset"].drop()
-    db.create_collection("dataset")
+    # if "dataset" in collection_names:
+    #     db["dataset"].drop()
+    # db.create_collection("dataset")
 
 @click.command('init-db')
 def init_db_command():
