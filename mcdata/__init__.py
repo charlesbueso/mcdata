@@ -4,7 +4,7 @@ from .config import config
 from .dataset import Dataset
 from .search import search_database
 
-ALLOWED_EXTENSIONS={'txt', 'pdf', 'xlsx', 'csv', 'json'}
+ALLOWED_EXTENSIONS={'txt', 'pdf', 'xlsx'}
 
 def allowed_file(filename):
     return '.' in filename and \
