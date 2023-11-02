@@ -43,6 +43,7 @@ def create_app(test_config=None):
                 return redirect('/')
             
             f = request.files['file'] 
+            print(type(f))
 
             if f.filename == '':
                 return redirect('/')
