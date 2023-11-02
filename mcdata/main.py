@@ -4,20 +4,13 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from .user import User
-from . import db
-from .search import search_database
+from .search import searchPost
 from flask_login import login_required, current_user
-from .config import config
 from .dataset import Dataset
 
 
 main = Blueprint('main', __name__)
 
-ALLOWED_EXTENSIONS={'txt', 'pdf', 'xlsx'}
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 ##############################
 ########## Homepage ##########
@@ -31,34 +24,14 @@ def index():
 ##############################
 @main.route('/datasetuploaded', methods=['POST'])   
 def datasetuploaded():   
-    if request.method == 'POST':
-        # check if the post request has file
-        if 'file' not in request.files:
-            return redirect('/')
-        
-        f = request.files['file'] 
-
-        if f.filename == '':
-            return redirect('/')
-
-        # check allowed file
-        if f and allowed_file(f.filename):
-
-            Dataset.uploadDataset(f, f.filename)
-
-            return render_template("datasetuploaded.html", name = f.filename)
+    return Dataset.uploadPost()
 
 ##############################
 ####### Search Results #######
 ##############################
 @main.route('/searchresults', methods=['POST'])
 def search():
-
-    if request.method == 'POST':
-
-        search_input = request.form.get("search_input")
-
-    return render_template('searchresults.html', search_results=search_database(search_input))
+    return searchPost()
 
 ###############################
 ####### Sign In/Sign Up #######
