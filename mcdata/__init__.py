@@ -4,7 +4,7 @@ from .config import config
 from .dataset import Dataset
 from .search import search_database
 
-ALLOWED_EXTENSIONS={'txt', 'pdf', 'xlsx'}
+ALLOWED_EXTENSIONS={'txt', 'pdf', 'xlsx', 'csv', 'json'}
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -43,6 +43,7 @@ def create_app(test_config=None):
                 return redirect('/')
             
             f = request.files['file'] 
+            print(type(f))
 
             if f.filename == '':
                 return redirect('/')

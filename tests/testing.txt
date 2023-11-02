@@ -1,3 +1,6 @@
-testing
-data
-uploader!
+Name	Age	Hobby	Gender
+Carlos	24	basket	m
+Marco	25	playstation	m
+John	26	hockey	m
+Jane	33	pcs	f
+Briz	16	comprar	f
