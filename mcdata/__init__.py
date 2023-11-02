@@ -1,14 +1,7 @@
 import os
 from flask import Flask, render_template, request, send_file, g, redirect
-from .config import config
-from .dataset import Dataset
-from .search import search_database
-
-ALLOWED_EXTENSIONS={'txt', 'pdf', 'xlsx', 'csv', 'json'}
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+from flask_login import login_required, current_user
+from flask_login import LoginManager 
 
 def create_app(test_config=None):
     # create and configure the app
@@ -30,41 +23,25 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # Homepage
-    @app.route('/', methods=['GET', 'POST'])
-    def main():
-        return render_template("index.html")
-
-    @app.route('/datasetuploaded', methods=['POST'])   
-    def datasetuploaded():   
-        if request.method == 'POST':
-            # check if the post request has file
-            if 'file' not in request.files:
-                return redirect('/')
-            
-            f = request.files['file'] 
-            print(type(f))
-
-            if f.filename == '':
-                return redirect('/')
-
-            # check allowed file
-            if f and allowed_file(f.filename):
-
-                Dataset.uploadDataset(f, f.filename)
-
-                return render_template("datasetuploaded.html", name = f.filename)
-    
-    @app.route('/searchresults', methods=['POST'])
-    def search():
-
-        if request.method == 'POST':
-
-            search_input = request.form.get("search_input")
-
-        return render_template('searchresults.html', search_results=search_database(search_input))
-
+    #### INITIALIZE APP ####
     from . import db
     db.init_app(app)
 
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+    from .user import User
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        # since the user_id is just the primary key of our user table, use it in the query for the user
+        return  User("id", "email", "username", "pass", "name", "last", "owned")# TODO query to get USER object User.query.get(int(user_id))
+
+    # blueprint for non-auth parts of app
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    # blueprint for auth routes in our app
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint)
     return app
