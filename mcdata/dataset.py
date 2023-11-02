@@ -92,38 +92,6 @@ class Dataset:
         # # Close the database connection.
         # db.close_db()
 
-    def uploadDataset(data, filename, encoding="utf-8"):
-        """Stores a data file in MongoDB with Pymongo.
-
-        Args:
-            data_file: A file object.
-            mongodb_client: A pymongo MongoClient object.
-            mongodb_database: The name of the MongoDB database to store the data in.
-            mongodb_collection: The name of the MongoDB collection to store the data in.
-        """
-
-        # Read the header row.
-        header_row = data.readline().strip().decode(encoding).split(",")
-
-        # Create a MongoDB collection if it doesn't already exist.
-        collection = db.get_db()[str(filename)]
-
-        # Iterate over the rows in the data file and insert them into the MongoDB collection.
-        for row in data:
-            # Split the row into columns.
-            columns = row.strip().decode(encoding)
-
-            # Split the row into columns.
-            columns = row.split(",")
-
-            # Create a MongoDB document from the row data.
-            document = {}
-            for i in range(len(header_row)):
-                document[header_row[i]] = columns[i]
-
-            # Insert the document into the MongoDB collection.
-            collection.insert_one(document)
-
     
     # def downloadDataset():
     #     #if user has bought
