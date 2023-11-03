@@ -48,9 +48,11 @@
     <form action="/datasetuploaded" method="post" enctype="multipart/form-data">
         <input type="file" name="file" />
         <input type="submit" value="Upload Dataset">
-        <button class="create-account-button">Create Account</button>
     </form>
-    
+    <form action="/profile" method="get" enctype="multipart/form-data">
+        <input type="submit" value="Sign In/Sign Up">
+        <!--button class="create-account-button">Sign In/Sign Up</button-->
+    </form>
     <form action="/searchresults" method="post" enctype="multipart/form-data">
         <input type="text" name="search_input" class="search-bar" placeholder="Search Datasets...">
         <input type="submit" value="Search">
