@@ -82,6 +82,26 @@ class Dataset:
 
                 collection.insert_one(document)
                 
+
+    # def uploadDataset(file):
+        # # Open the file as a binary stream.
+        # file_stream = file.stream.read()
+        
+        # # Get connection and collection
+        # collection = db.get_db()['dataset']
+
+        # # Create a new document in the collection.
+        # document = {
+        #     'filename': file.filename,
+        #     'file_data': file_stream,
+        # }
+
+        # # Insert the document into the collection.
+        # collection.insert_one(document)
+
+        # # Close the database connection.
+        # db.close_db()
+
     def downloadDataset():
     #     #if user has bought
     #     #   fetch data from mongodb, give user download
