@@ -1,3 +1,4 @@
+# flask ignore files
 /mcdata-venv
 .venv/
 
@@ -13,3 +14,26 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+# reactjs ignore files
+mcdata-frontend/node_modules
+mcdata-frontend/.pnp
+mcdata-frontend/.pnp.js
+
+# testing
+mcdata-frontend/coverage
+
+# production
+mcdata-frontend/build
+
+# misc
+mcdata-frontend/.DS_Store
+mcdata-frontend/.env.local
+mcdata-frontend/.env.development.local
+mcdata-frontend/.env.test.local
+mcdata-frontend/.env.production.local
+
+# debug log files
+mcdata-frontend/npm-debug.log*
+mcdata-frontend/yarn-debug.log*
+mcdata-frontend/yarn-error.log*
