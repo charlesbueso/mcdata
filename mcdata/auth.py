@@ -7,6 +7,7 @@ from .user import User
 from . import db
 from bson.json_util import dumps
 from bson.json_util import loads
+import uuid
 
 auth = Blueprint('auth', __name__)
 
@@ -67,8 +68,9 @@ def signup_post():
         return redirect(url_for('auth.signup'))
 
     # create new user with the form data. Hash the password so plaintext version isn't saved.
+    user_id = str(uuid.uuid4())
     new_user_doc = {
-        "user_id": "10",
+        "user_id": user_id, #TODO do we want to keep this?
         "email" : email,
         "username" : email,
         "password" : generate_password_hash(password),
@@ -77,8 +79,6 @@ def signup_post():
         "datasets_owned" :{}
         # "is_active": "False" TODO remove?
     }
-    #new_user = User("1", email=email, username=email, password=generate_password_hash(password), first_name=name, last_name="Last")
-    #new_user_document = bson.decode(bson.encode(new_user.__dict__))
     user_collection.insert_one(new_user_doc)
     print("USER CREATED")
 
@@ -91,4 +91,4 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('app.index'))
+    return redirect(url_for('main.index'))

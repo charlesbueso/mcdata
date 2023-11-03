@@ -6,7 +6,7 @@ from .config import config
 
 def get_db():
     if 'db' not in g:
-        client = MongoClient(config['host'], config['port_number']) 
+        client = MongoClient(config['host'], config['port_number'],uuidRepresentation='standard') 
         g.db = client[config['database']] 
 
     return g.db
