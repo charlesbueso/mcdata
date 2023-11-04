@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import homepage_animation from './homepage_animation.mp4';
+import './homepage.css';
 
 const Header = () => {
   return (
@@ -17,21 +19,7 @@ const Header = () => {
 
 const Body = () => {
   return (
-    <div className="body">
-      <div className="grid">
-        <div className="column">
-          <animation />
-        </div>
-        <div className="column">
-          <animation />
-        </div>
-        <div className="column">
-          <animation />
-        </div>
-        <div className="column">
-          <animation />
-        </div>
-      </div>
+    <div className="body-text">
       <div className="text">
         <h3>Dataset market</h3>
         <h1>MCDATA: the crowdsourced data marketplace</h1>
@@ -61,9 +49,18 @@ const CurrentTime = () => {
     );
   };
 
+const BackgroundAnimation = () => {
+    return (
+      <video autoPlay muted loop className="background-animation" >
+        <source src={homepage_animation} type="video/mp4" />
+      </video>
+    );
+  };
+
 export const HomePage = () => {
     return (
       <div className="homepage">
+        <BackgroundAnimation />
         <Header />
         <Body />
         <CurrentTime />
