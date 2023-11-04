@@ -6,7 +6,7 @@ import './homepage.css';
 const Header = () => {
   return (
     <div className="header">
-      <img src="/logo.png" alt="mcdata logo" />
+      <img className="logo" src="/logo.png" alt="mcdata logo" />
       <div className="buttons">
         <button>Home</button>
         <button>Data</button>
@@ -20,14 +20,14 @@ const Header = () => {
 const Body = () => {
   return (
     <div className="body-text">
-      <div className="text">
-        <h3>Dataset market</h3>
-        <h1>MCDATA: the crowdsourced data marketplace</h1>
-        <p>With mcdata, you can find and purchase high-quality datasets from our community.
-          You can also sell your own datasets to other users, and earn money for your data.</p>
-      </div>
-      <div className="explore-button">
-        <button>Explore datasets</button>
+      <div>
+        <h1>mcdata: the crowdsourced<br />data marketplace</h1>
+        <p>The place to find high-quality datasets curated by our community. You can also <br />sell your own datasets to other users, and earn money for your data.
+        </p>
+        <br />
+        <button className="explore-button">
+        ⇨  Explore datasets 
+        </button>
       </div>
     </div>
   );
