@@ -7,10 +7,18 @@ from .user import User
 from .search import searchPost
 from flask_login import login_required, current_user
 from .dataset import Dataset
+import time
 
 
 main = Blueprint('main', __name__)
 
+
+##############################
+##### test react endpoint ####
+##############################
+@main.route('/time')
+def get_current_time():
+    return {'time': time.time()}
 
 ##############################
 ########## Homepage ##########
