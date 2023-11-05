@@ -1,0 +1,20 @@
+.account-page {
+    height: 200vh;
+    width: 100%;
+    overflow-x:hidden;
+    background-color: #131313;
+}
+
+.account-body-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Syncopate', sans-serif;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3vw;
+    line-height: 1.2;
+    font-size: 3vw;
+    text-align: center;
+  }

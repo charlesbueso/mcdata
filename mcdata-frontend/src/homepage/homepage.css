@@ -1,9 +1,9 @@
 .header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 57px;
+    height: 63px;
     background-color: black;
     display: flex;
     justify-content: space-between;
@@ -11,25 +11,31 @@
   }
   
   .header .logo {
-    margin-left: 10px;
-    height: 70px;
+    margin-left: 18px;
+    margin-top: +5px;
+    height: 75px;
     width: auto;
   }
-  
+
   .header .buttons {
     margin-right: 40px;
+    margin-top: -6px;
+    display: flex;
+    justify-content: space-between;
   }
   
-  .header .buttons button {
-    margin-left: 40px;
+  .header .buttons a {
+    margin-left: 60px;
+    color: white;
+    font-size: 16px;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: #ffffff;
+    text-decoration: none;
   }
-
-  .header .buttons button:hover {
-    color: #000000;
+  
+  .header .buttons a:hover {
+    color: #c0c0c0;
   }
 
 .current-time {
@@ -37,14 +43,14 @@
     bottom: 0;
     right: 0;
     padding: 10px;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .background-animation {
     object-fit: cover;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
 }
@@ -54,19 +60,19 @@
     border: none;
     cursor: pointer;
     color: #ffffff;
-    position: absolute;
+    position: fixed;
     margin: 0 auto;
     text-align: left;
     font-size: 17px;
   }
 
   .explore-button:hover {
-    color: #000000;
+    color: #c0c0c0;
   }
 
 
 .body-text {
-    position: relative;
+    position: absolute;
     height: 50vh;
     text-align: left;
     transform: translateY(50%);
@@ -75,7 +81,7 @@
     align-items: center;
     justify-content: flex-start;
     color: #ffffff;
-    font-size: 1.40rem;
+    font-size: 1.40rem; /*proportionally increase body-text size*/
 }
   
   .body-text p {
@@ -83,10 +89,8 @@
   }
 
 .homepage {
-    /* position: relative;
-    height: 100vh;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center; */
+    height: 200vh;
+    width: 100%;
+    overflow-x:hidden;
+    background-color: #131313;
 }
