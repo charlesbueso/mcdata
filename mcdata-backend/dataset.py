@@ -3,6 +3,8 @@ import re
 from flask import render_template, redirect, request
 from . import db
 from .validate import ValidateDataset
+import pymongo
+from flask import jsonify
 
 class Dataset:
     def __init__(self, id, data, name, user, price, size, date_upload, downloads):
@@ -29,10 +31,11 @@ class Dataset:
             # check allowed file extensions and upload Dataset
             if f and ValidateDataset.allowed_file_extensions(f.filename):
                 Dataset.uploadDatasetMongo(f, f.filename)
-                return render_template("datasetuploaded.html", name = f.filename)
-            
+                temp_response = jsonify({"status": "success"})
+                return temp_response
             else:
-                return redirect('/')
+                temp_response = jsonify({"status": "failed"})
+                return temp_response
 
     def uploadDatasetMongo(data, filename):
         # Get file type with extension
@@ -59,6 +62,8 @@ class Dataset:
                     document[header_row[i]] = columns[i]
 
                 collection.insert_one(document)
+            
+            print("Uploaded: " + filename)
 
         elif extension == 'xlsx':
 
@@ -81,35 +86,79 @@ class Dataset:
                     document[header_row[i]] = columns[i]
 
                 collection.insert_one(document)
+            
+            print("Uploaded: " + filename)
                 
 
-    # def uploadDataset(file):
-        # # Open the file as a binary stream.
-        # file_stream = file.stream.read()
-        
-        # # Get connection and collection
-        # collection = db.get_db()['dataset']
+    def downloadDataset():
+        """if user has bought
+          fetch data from mongodb, give user download
+        has_bought(dataset_id, user)
+        has_bought = True
+        if has_bought:
+            """
+        return
+    
+    def getTopDatasets(number_of_datasets=5):
+        """ideally will return following Json, dataset0 being the highest ranked:
+        Response = {
+            Dataset0: {
+                _id: ‘’,
+                Name: ‘’,
+                Description: ‘’,
+                Type: ‘’,
+                Rows: ‘’, 
+                Cols: ‘’,
+                Size (GB): ‘’,
+                LLMinsights: ‘’,
+            }
+            Dataset1: {…}
+            Dataset2: {…}
+            Dataset3: {…}
+            Dataset4: {…}
+        }
 
-        # # Create a new document in the collection.
-        # document = {
-        #     'filename': file.filename,
-        #     'file_data': file_stream,
+        for now, only one dataset 5 times:
+        Response = {
+            "_id": str(collection._id),
+            "Name": collection.name,
+            "Rows": num_rows,
+            "Cols": num_cols,
+            "Size (MB)": collection_size
+        }
+        """
+
+        # Connect to the database.
+        client = pymongo.MongoClient()
+        db = client["mcdata-test"]
+
+        # Get the collection.
+        collection = db["testing"]
+
+        # Get the number of documents in the collection.
+        num_rows = collection.count_documents({})
+
+        # Get the number of tags on the first document
+        num_cols = 0
+        for document in collection.find():
+            num_cols += len(document.keys())
+            break
+
+        # Get the size of the collection in MB
+        collection_size = db.command("collstats", "testing")["size"]
+
+
+        # # Create a JSON object with the collection information.
+        # collection_info = {
+        #     "_id": str(collection._id),
+        #     "Name": collection.name,
+        #     "Rows": num_rows,
+        #     "Cols": num_cols,
+        #     "Size (GB)": collection_size
         # }
 
-        # # Insert the document into the collection.
-        # collection.insert_one(document)
+        # print(collection_info)
 
-        # # Close the database connection.
-        # db.close_db()
-
-    def downloadDataset():
-    #     #if user has bought
-    #     #   fetch data from mongodb, give user download
-    #     # has_bought(dataset_id, user)
-    #     has_bought = True
-    #     if has_bought:
-        return
+        return collection_size, num_cols, num_rows
     
-    def displayDataset():
-        return
-    
+# print(Dataset.getTopDatasets())

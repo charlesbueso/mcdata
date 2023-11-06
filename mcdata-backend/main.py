@@ -30,7 +30,7 @@ def index():
 ##############################
 ####### Dataset Upload #######
 ##############################
-@main.route('/datasetuploaded', methods=['POST'])   
+@main.route('/datasetuploaded', methods=['GET', 'POST'])   
 def datasetuploaded():   
     return Dataset.uploadPost()
 
