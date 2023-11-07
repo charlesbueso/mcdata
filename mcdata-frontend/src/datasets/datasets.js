@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate  } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import './datasets.css';
@@ -18,46 +18,24 @@ const Header = () => {
     );
   };
 
-// const Body = () => {
-//     return(
-//         <header className='data-body-text'>
-//             <h1>
-//                 Datasets
-//             </h1>
-//         </header>
-//     )
-// };
-
 const Body = () => {
   const [file, setFile] = useState(null);
-  const navigate = useNavigate();
 
   const handleFileUpload = async () => {
     const formData = new FormData();
     formData.append('file', file);
-    console.log("test");
 
     try {
       const response = await axios.post('/datasetuploaded', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        },  
+        },
       });
 
-      const data = await response.json();
-      console.log(data);
-      console.log("test");
-
-      if (data.status === 'success') {
-        return (
-          navigate("/about")
-        );
-      } else {
-        // Handle error response here
-      }
-
+      // Handle success response here
     } catch (error) {
-        return console.log("Something went wrong with the server [POST].");
+      // Handle error response here
+    }
   };
 
   return (
@@ -78,4 +56,4 @@ export const DataPage = () => {
         <Body />
       </div>
     );
-};
+  };
