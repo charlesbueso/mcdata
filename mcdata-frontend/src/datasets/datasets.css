@@ -18,3 +18,35 @@
     font-size: 3vw;
     text-align: center;
   }
+
+ .footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #000;
+    border-top: 1px solid #ccc;
+  }
+  
+  .footer-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    transition: all 0.2s ease;
+  }
+  
+  .footer-buttons a:hover {
+    background-color: #e6e6e6;
+  }

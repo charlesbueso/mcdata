@@ -16,6 +16,7 @@ build/
 *.egg-info/
 
 # reactjs ignore files
+node_modules/
 mcdata-frontend/node_modules
 mcdata-frontend/.pnp
 mcdata-frontend/.pnp.js
