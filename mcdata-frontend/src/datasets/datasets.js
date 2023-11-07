@@ -31,10 +31,29 @@ const Body = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-
       // Handle success response here
+      if (response.status === 200) {
+
+        // Dataset upload success
+        if (response.data === "Dataset uploaded to mcdata marketplace") {
+          console.log(response.data)
+        }
+        // Dataset upload failed
+        if (response.data === "Couldn't upload dataset") {
+          console.log(response.data)
+        }
+        // Dataset validation failed
+        if (response.data === "Couldn't validate dataset") {
+          console.log(response.data)
+        }
+
+       }
+      
+      
     } catch (error) {
       // Handle error response here
+      // This means the POST request failed (error 400)
+      console.log(error)
     }
   };
 
