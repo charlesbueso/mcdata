@@ -1,24 +1,9 @@
 import React from 'react';
 import { DataPage } from '../datasets/datasets.js';
 import { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Header } from '../utils/header';
 import homepage_animation from './homepage_animation.mp4';
 import './homepage.css';
-
-const Header = () => {
-  return (
-    <div className="header">
-      <img className="logo" src="/logo.png" alt="mcdata logo" />
-      <nav className="buttons">
-        <Link to="/">Home</Link>
-        <Link to="/data">Data</Link>
-        <Link to="/about">About</Link>
-        <Link to="/account">Account</Link>
-      </nav>
-      <Outlet/>
-    </div>
-  );
-};
 
 const Body = () => {
 

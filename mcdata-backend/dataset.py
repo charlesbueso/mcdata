@@ -16,6 +16,14 @@ class Dataset:
         self.date_upload = date_upload
         self.downloads = downloads
 
+    def getDataset(collection_name="testing"):
+        """
+        Gets collection with matching pk=collection_name
+        """
+
+        collection = db.get_db[collection_name]
+        return collection
+
     def uploadPost():
         # check if the post request has file
         if request.method == 'POST':
