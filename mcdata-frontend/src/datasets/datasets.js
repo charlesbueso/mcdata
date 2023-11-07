@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import { Header } from '../utils/header';
 import './datasets.css';
@@ -53,11 +54,28 @@ const Body = () => {
   );
 };
 
+export const Footer = () => {
+  /* Currently sending all to the same homepage for testing */
+  return (
+    <div className="footer">
+      <nav className="footer-buttons">
+        <Link to="/datasethomepage">Dataset 0</Link>
+        <Link to="/datasethomepage">Dataset 1</Link>
+        <Link to="/datasethomepage">Dataset 2</Link>
+        <Link to="/datasethomepage">Dataset 3</Link>
+        <Link to="/datasethomepage">Dataset 4</Link>
+        </nav>
+      <Outlet/>
+    </div>
+  );
+};
+
 export const DataPage = () => {
     return (
       <div className='data-page'>
         <Header />
         <Body />
+        <Footer />
       </div>
     );
   };
