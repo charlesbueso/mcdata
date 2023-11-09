@@ -18,6 +18,39 @@
     font-size: 3vw;
     text-align: center;
   }
+  
+  /* Hide the default file input */
+  .data-body-text input[type="file"] {
+    display: none;
+  }
+
+  .data-body-text button {
+    padding: 10px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .select-file-label {
+    background-color: #131313;
+    color: white;
+    cursor: pointer;
+    height: 10px;
+  }
+
+.select-file-prompt {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    display: inline-block;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: -0.5px; /* Adjust letter spacing to reduce spacing */
+  }
 
  .footer {
     position: fixed;

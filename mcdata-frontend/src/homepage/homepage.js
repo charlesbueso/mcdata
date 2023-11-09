@@ -1,12 +1,12 @@
 import React from 'react';
-import { DataPage } from '../datasets/datasets.js';
 import { useState, useEffect } from 'react';
 import { Header } from '../utils/header';
+import { useNavigate } from 'react-router-dom';
 import homepage_animation from './homepage_animation.mp4';
 import './homepage.css';
 
 const Body = () => {
-
+  const navigate = useNavigate();
     return (
     <div className="body-text">
       <div>
@@ -15,7 +15,7 @@ const Body = () => {
             <br />sell your own datasets to other users, and earn money for your data.
         </p>
         <br />
-        <button className="explore-button" onClick={() => DataPage()}>
+        <button className="explore-button" onClick={() => navigate('/data')}>
         ⇨  Explore datasets 
         </button>
       </div>

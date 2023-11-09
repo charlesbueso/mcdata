@@ -48,7 +48,10 @@ const Body = () => {
       <h1>
         Datasets
       </h1>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <label htmlFor="select-file" className="select-file-label" onChange={handleFileUpload}>
+        <h1 className="select-file-prompt">Sell your dataset!</h1>
+          <input id="select-file" type="file" onChange={(e) => setFile(e.target.files[0])} />
+        </label>
       <button onClick={handleFileUpload}>Upload</button>
     </header>
   );
