@@ -1,8 +1,60 @@
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
+import { Gallery } from 'react-grid-gallery';
 import { Header } from '../utils/header';
 import './datasets.css';
+
+const images = [
+  {
+    src: '/surrealism0.jpeg',
+    alt: 'Surrealism Image 1',
+    thumbnailCaption: 'First surrealism image.',
+  },
+  {
+    src: '/surrealism1.jpg',
+    alt: 'Surrealism Image 2',
+    thumbnailCaption: 'Second surrealism image.',
+  },
+  {
+    src: '/surrealism2.jpeg',
+    alt: 'Surrealism Image 3',
+    thumbnailCaption: 'Third surrealism image.',
+  },
+  {
+    src: '/surrealism3.jpg',
+    alt: 'Surrealism Image 4',
+    thumbnailCaption: 'Fourth surrealism image.',
+  },
+  {
+    src: '/surrealism4.jpg',
+    alt: 'Surrealism Image 5',
+    thumbnailCaption: 'Fifth surrealism image.',
+  },
+];
+
+const bardsStylingFunction = (image) => {
+  return {
+    borderRadius: '10px',
+    border: '2px solid #eee',
+    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)',
+    padding: '5px',
+    cursor: 'pointer',
+  };
+};
+
+const DatasetGrid = () => {
+  return (
+    <div style={{ marginTop: '130px' }}>
+      <Gallery
+        images={images}
+        rowHeight={170}
+        margin={20} 
+        thumbnailStyle={bardsStylingFunction}
+      />
+    </div>
+  );
+};
 
 const Body = () => {
   const [file, setFile] = useState(null);
@@ -76,6 +128,7 @@ export const Footer = () => {
 export const DataPage = () => {
     return (
       <div className='data-page'>
+        <DatasetGrid />
         <Header />
         <Body />
         <Footer />
