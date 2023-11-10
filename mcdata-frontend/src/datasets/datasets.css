@@ -5,18 +5,77 @@
     background-color: #131313;
 }  
 
+.gallery-wrapper-1 {
+  width: 50%;
+  padding: 10px;
+  transform: translate(50%, 30%);
+  margin-bottom: -80px;
+}
+
+.gallery-wrapper-2 {
+  width: 50%;
+  padding: 10px;
+  transform: translate(65%, 30%);
+}
+
 .data-body-text {
     position: absolute;
-    top: 50%;
+    top: 72%;
+    left: 49%; /*should be 50% completely centered*/
+    transform: translate(-50%, -50%);
+    /* font-family: 'Roboto', sans-serif; */
+    color: #ffffff;
+    text-transform: none;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .data-body-text h3 {
+    color: rgb(135, 141, 173);
+    font-size: 15px;
+  }
+  
+
+.data-upload {
+    position: absolute;
+    top: 93%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Syncopate', sans-serif;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 3vw;
-    line-height: 1.2;
-    font-size: 3vw;
+
+}
+  /* Hide the default file input */
+.data-upload input[type="file"] {
+    display: none;
+  }
+
+  .data-upload button {
+    padding: 10px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .select-file-label {
+    background-color: #131313;
+    color: white;
+    cursor: pointer;
+    height: 10px;
+  }
+
+.select-file-prompt {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    display: inline-block;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
     text-align: center;
+    cursor: pointer;
+    letter-spacing: -0.5px; /* Adjust letter spacing to reduce spacing */
   }
   
   /* Hide the default file input */

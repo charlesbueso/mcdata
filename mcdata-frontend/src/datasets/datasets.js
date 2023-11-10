@@ -5,58 +5,75 @@ import { Gallery } from 'react-grid-gallery';
 import { Header } from '../utils/header';
 import './datasets.css';
 
-const images = [
+const imageThumbnailWidth = 40;
+const imageThumbnailHeight = 40;
+
+const images1 = [
   {
     src: '/surrealism0.jpeg',
     alt: 'Surrealism Image 1',
-    thumbnailCaption: 'First surrealism image.',
+    caption: 'Pune tech workers under 30',
+    width: imageThumbnailWidth,
+    height: imageThumbnailHeight,
   },
   {
     src: '/surrealism1.jpg',
     alt: 'Surrealism Image 2',
-    thumbnailCaption: 'Second surrealism image.',
+    caption: 'Medical images of rare diseases',
+    width: imageThumbnailWidth,
+    height: imageThumbnailHeight,
   },
   {
     src: '/surrealism2.jpeg',
     alt: 'Surrealism Image 3',
-    thumbnailCaption: 'Third surrealism image.',
+    caption: 'Behavior of users in virtual worlds',
+    width: imageThumbnailWidth,
+    height: imageThumbnailHeight,
   },
+];
+
+const images2 = [
   {
     src: '/surrealism3.jpg',
     alt: 'Surrealism Image 4',
-    thumbnailCaption: 'Fourth surrealism image.',
+    caption: 'Effectiveness of new drugs',
+    width: imageThumbnailWidth,
+    height: imageThumbnailHeight,
   },
   {
     src: '/surrealism4.jpg',
     alt: 'Surrealism Image 5',
-    thumbnailCaption: 'Fifth surrealism image.',
+    caption: 'Dreams of people from different cultures',
+    width: imageThumbnailWidth,
+    height: imageThumbnailHeight,
   },
 ];
 
-const bardsStylingFunction = (image) => {
-  return {
-    borderRadius: '10px',
-    border: '2px solid #eee',
-    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)',
-    padding: '5px',
-    cursor: 'pointer',
-  };
-};
 
-const DatasetGrid = () => {
+const GalleryGrid = ({ images, maxRows, rowHeight, margin, enableImageSelection, className }) => {
   return (
-    <div style={{ marginTop: '130px' }}>
+    <div className={`gallery-wrapper ${className}`}>
       <Gallery
         images={images}
-        rowHeight={170}
-        margin={20} 
-        thumbnailStyle={bardsStylingFunction}
+        maxRows={maxRows}
+        rowHeight={rowHeight}
+        margin={margin}
+        enableImageSelection={enableImageSelection}
       />
     </div>
   );
 };
 
-const Body = () => {
+const DatasetHeading = () => {
+  return (
+    <header className='data-body-text'>
+      <h2>The Data</h2>
+      <h3>mcdata empowers your data-driven journey with a diverse and trusted marketplace of datasets.</h3>
+    </header>
+  );
+};
+
+const DatasetUpload = () => {
   const [file, setFile] = useState(null);
 
   const handleFileUpload = async () => {
@@ -96,16 +113,13 @@ const Body = () => {
   };
 
   return (
-    <header className='data-body-text'>
-      <h1>
-        Datasets
-      </h1>
-        <label htmlFor="select-file" className="select-file-label" onChange={handleFileUpload}>
+    <div className='data-upload'>
+      <label htmlFor="select-file" className="select-file-label" onChange={handleFileUpload}>
         <h1 className="select-file-prompt">Sell your dataset!</h1>
           <input id="select-file" type="file" onChange={(e) => setFile(e.target.files[0])} />
-        </label>
+      </label>
       <button onClick={handleFileUpload}>Upload</button>
-    </header>
+    </div>
   );
 };
 
@@ -126,12 +140,28 @@ export const Footer = () => {
 };
 
 export const DataPage = () => {
-    return (
-      <div className='data-page'>
-        <DatasetGrid />
-        <Header />
-        <Body />
-        <Footer />
-      </div>
-    );
-  };
+  return (
+    <div className='data-page'>
+      <Header />
+      <GalleryGrid
+        className='gallery-wrapper-1'
+        images={images1}
+        maxRows={3}
+        rowHeight={130}
+        margin={60}
+        enableImageSelection={false}
+      />
+      <GalleryGrid
+        className='gallery-wrapper-2'
+        images={images2}
+        maxRows={3}
+        rowHeight={130}
+        margin={60}
+        enableImageSelection={false}
+      />
+      <DatasetHeading />
+      <DatasetUpload />
+      {/* <Footer /> */}
+    </div>
+  );
+};
