@@ -1,6 +1,6 @@
 from pymongo import MongoClient 
 import click
-from flask import current_app, g
+from flask import g
 from .config import config
 
 
