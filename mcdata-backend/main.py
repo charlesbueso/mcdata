@@ -4,9 +4,8 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from .user import User
-from .search import searchPost
+from . import search, dataset
 from flask_login import login_required, current_user
-from .dataset import Dataset
 import time
 
 
@@ -32,14 +31,14 @@ def index():
 ##############################
 @main.route('/datasetuploaded', methods=['GET', 'POST'])   
 def datasetuploaded():   
-    return Dataset.uploadPost()
+    return dataset.uploadPost()
 
 ##############################
 ####### Search Results #######
 ##############################
 @main.route('/searchresults', methods=['POST'])
 def search():
-    return searchPost()
+    return search.searchPost()
 
 ###############################
 ####### Sign In/Sign Up #######

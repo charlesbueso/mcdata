@@ -1,6 +1,6 @@
 from pymongo import MongoClient 
 import click
-from flask import current_app, g
+from flask import g
 from .config import config
 
 
@@ -20,23 +20,27 @@ def close_db(e=None):
 
 def init_db():
     db = get_db() #client
-    init_schema()
+    init_schema(db)
     
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
 
 def init_schema(db):
-    #cleans up collections, sets user
+    # flask --app mcdata-backend init-db
     collection_names = db.list_collection_names()
 
-    if "user" in collection_names:
-        db["user"].drop()
-    db.create_collection("user")
+    if "user" not in collection_names:
+        db.create_collection("user")
+
+    # Delete all other collections
+    for collection_name in collection_names:
+        if collection_name != "user":
+            db[collection_name].drop()
 
 @click.command('init-db')
 def init_db_command():
-    """Clear the existing data and create new tables."""
+    """Cleans up collections, sets user if not found."""
     init_db()
     click.echo('Initialized the database.')
 
