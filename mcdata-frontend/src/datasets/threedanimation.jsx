@@ -1,6 +1,6 @@
 import { BackSide, DoubleSide, Vector3 } from "three";
 import React, { useEffect, useRef, useState } from 'react'
-import { Environment, MeshPortalMaterial, OrbitControls, RoundedBox, useTexture, Text, CameraControls } from "@react-three/drei";
+import { Environment, MeshPortalMaterial, RoundedBox, useTexture, Text, CameraControls, useCursor } from "@react-three/drei";
 import { Punk } from "../threecomponents/Punk"
 import { Adventurer } from "../threecomponents/Adventurer";
 import { Witch } from "../threecomponents/Witch";
@@ -11,6 +11,8 @@ import { easing } from "maath"
 export const Experience = () => {
 
     const [active, setActive] = useState(null);
+    const [hovered, setHovered] = useState(null);
+    useCursor(hovered);
     const controlsRef = useRef();
     const scene = useThree((state) => state.scene);
 
@@ -40,9 +42,10 @@ export const Experience = () => {
         }
     }, [active]);
 
+    //TODO: Refactor name="" and hovered in Adventurer,Punk,Witch
     return (
         <>
-        <CameraControls ref={controlsRef}/>
+        <CameraControls ref={controlsRef} maxPolarAngle={Math.PI / 1.6} minPolarAngle={Math.PI / 3}/>
         <ambientLight intensity={.5} />
         <Environment preset="sunset" />
 
@@ -51,8 +54,10 @@ export const Experience = () => {
             name="Mark" 
             color={"#07194c"} 
             active={active}
-            setActive={setActive}>
-                <Adventurer scale={1.2} position-y={-1}/>
+            setActive={setActive}
+            hovered={hovered}
+            setHovered={setHovered}>
+                <Adventurer scale={1.1} position-y={-0.9} hovered={hovered === "Mark"}/>
         </MonsterStage>
 
         <MonsterStage 
@@ -62,8 +67,10 @@ export const Experience = () => {
             name="Charles" 
             color={"#a9162a"}
             active={active}
-            setActive={setActive}>
-                <Punk scale={1.2} position-y={-1}/>
+            setActive={setActive}
+            hovered={hovered}
+            setHovered={setHovered}>
+                <Punk scale={1.1} position-y={-0.9} hovered={hovered === "Charles"}/>
         </MonsterStage>
 
         <MonsterStage 
@@ -73,14 +80,16 @@ export const Experience = () => {
             name="Briz" 
             color={"#714837"}
             active={active}
-            setActive={setActive}>    
-                <Witch scale={1.2} position-y={-1}/>
+            setActive={setActive}
+            hovered={hovered}
+            setHovered={setHovered}>
+                <Witch scale={1.1} position-y={-0.9} hovered={hovered === "Briz"}/>
         </MonsterStage>
         </>
     )
 }
 
-const MonsterStage = ({children, texture, name, color, active, setActive, ...props}) => {
+const MonsterStage = ({children, texture, name, color, active, setActive, hovered, setHovered, ...props}) => {
 
     const map = useTexture(texture);
     const portalMaterial = useRef();
@@ -99,7 +108,9 @@ const MonsterStage = ({children, texture, name, color, active, setActive, ...pro
         <RoundedBox 
         name={name}
         args={[2,3,0.1]} 
-        onDoubleClick={() => setActive(active === name ? null : name)}> 
+        onDoubleClick={() => setActive(active === name ? null : name)}
+        onPointerEnter={() => setHovered(name)}
+        onPointerLeave={() => setHovered(null)}> 
             <MeshPortalMaterial side={DoubleSide} ref={portalMaterial}>
                 <ambientLight intensity={1} />
                 <Environment preset="sunset" />

@@ -6,15 +6,16 @@ Command: npx gltfjsx@6.2.15 .\public\models\Adventurer.gltf -o src/threecomponen
 import React, { useRef, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
-export function Adventurer(props) {
+export function Adventurer({hovered, ...props}) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/Adventurer.gltf')
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    actions["Idle"].reset().fadeIn(0.5).play();
-    return () => actions["Idle"].fadeOut(0.5);
-  }, []);
+    const anim = hovered ? "Roll":"Idle";
+    actions[anim].reset().fadeIn(0.5).play();
+    return () => actions[anim].fadeOut(0.5);
+  }, [hovered]);
 
   return (
     <group ref={group} {...props} dispose={null}>

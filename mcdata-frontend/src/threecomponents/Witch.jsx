@@ -6,15 +6,16 @@ Command: npx gltfjsx@6.2.15 .\public\models\Witch.gltf -o src/threecomponents/Wi
 import React, { useRef, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
-export function Witch(props) {
+export function Witch({hovered, ...props}) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/Witch.gltf')
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    actions["Idle"].reset().fadeIn(0.5).play();
-    return () => actions["Idle"].fadeOut(0.5);
-  }, []);
+    const anim = hovered ? "Run":"Idle";
+    actions[anim].reset().fadeIn(0.5).play();
+    return () => actions[anim].fadeOut(0.5);
+  }, [hovered]);
 
   return (
     <group ref={group} {...props} dispose={null}>
