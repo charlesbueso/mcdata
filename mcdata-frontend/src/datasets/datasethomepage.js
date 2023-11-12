@@ -8,7 +8,7 @@ export const DatasetHomepage = () => {
     return (
       <div className='dataset-homepage'>
         <Header />
-        <Canvas>
+        <Canvas shadows camera={{ position:[0,0,10], fov:30}}>
           <Experience />
         </Canvas>
       </div>
