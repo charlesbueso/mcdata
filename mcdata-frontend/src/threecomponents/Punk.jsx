@@ -10,7 +10,7 @@ export function Punk(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/Punk.gltf')
   const { actions } = useAnimations(animations, group)
-  console.log(actions) //prints out animations that come with model
+  // console.log(actions) prints out animations that come with model
 
   useEffect(() => {
     actions["Idle"].reset().fadeIn(0.5).play();
