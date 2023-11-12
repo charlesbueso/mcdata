@@ -51,39 +51,39 @@ export const Experience = () => {
 
         <MonsterStage 
             texture={"/textures/psychedelic_ai.jpg"} 
-            name="Mark" 
+            name="mark" 
             color={"#07194c"} 
             active={active}
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Adventurer scale={1.1} position-y={-0.9} hovered={hovered === "Mark"}/>
+                <Adventurer scale={1.1} position-y={-0.9} hovered={hovered === "mark"}/>
         </MonsterStage>
 
         <MonsterStage 
             texture={"/textures/cyberpunk_big_data.jpg"} 
             position-x={-2.5} 
             rotation-y={Math.PI / 8}  
-            name="Charles" 
+            name="charles" 
             color={"#a9162a"}
             active={active}
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Punk scale={1.1} position-y={-0.9} hovered={hovered === "Charles"}/>
+                <Punk scale={1.1} position-y={-0.9} hovered={hovered === "charles"}/>
         </MonsterStage>
 
         <MonsterStage 
             texture={"/textures/sky_dome_futuristic.jpg"} 
             position-x={2.5} 
             rotation-y={-Math.PI / 8}
-            name="Briz" 
+            name="briz" 
             color={"#714837"}
             active={active}
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Witch scale={1.1} position-y={-0.9} hovered={hovered === "Briz"}/>
+                <Witch scale={1.1} position-y={-0.9} hovered={hovered === "briz"}/>
         </MonsterStage>
         </>
     )
@@ -101,7 +101,7 @@ const MonsterStage = ({children, texture, name, color, active, setActive, hovere
     
     return (
     <group {...props}>
-        <Text font="\fonts\DMSans\DMSans-italic.ttf" fontSize={0.3} position={[0, -1.4, 0.051]} anchorY={"bottom"}>
+        <Text font="fonts\BebasNeue\BebasNeue-Regular.ttf" fontSize={0.3} position={[0, -1.4, 0.051]} anchorY={"bottom"}>
             {name}
             <meshBasicMaterial color={color} toneMapped={false}/>
         </Text>
