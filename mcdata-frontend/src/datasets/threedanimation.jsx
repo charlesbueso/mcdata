@@ -20,15 +20,19 @@ export const Experience = () => {
         if (active) {
             const targetPosition = new Vector3();
             scene.getObjectByName(active).getWorldPosition(targetPosition);
+            
+            // Change camera position, inside and outside world
             controlsRef.current.setLookAt(
                 0,
                 0,
-                5,
+                7,
                 targetPosition.x,
                 targetPosition.y,
                 targetPosition.z,
                 true,
             )
+            controlsRef.current.minDistance = 7;
+            controlsRef.current.maxDistance = 7; //9
         } else {
             controlsRef.current.setLookAt(
                 0,
@@ -39,13 +43,15 @@ export const Experience = () => {
                 0,
                 true,
             )
+            controlsRef.current.minDistance = 10;
+            controlsRef.current.maxDistance = 10;
         }
     }, [active]);
 
     //TODO: Refactor name="" and hovered in Adventurer,Punk,Witch
     return (
         <>
-        <CameraControls ref={controlsRef} maxPolarAngle={Math.PI / 1.6} minPolarAngle={Math.PI / 3}/>
+        <CameraControls ref={controlsRef} maxPolarAngle={Math.PI / 1.6} minPolarAngle={Math.PI / 3} />
         <ambientLight intensity={.5} />
         <Environment preset="sunset" />
 

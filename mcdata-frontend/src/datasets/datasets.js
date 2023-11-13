@@ -139,7 +139,7 @@ export const Footer = () => {
   );
 };
 
-export const DataPage = () => {
+export const DatasetHomepage = () => {
   return (
     <div className='data-page'>
       <Header />
