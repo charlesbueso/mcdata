@@ -1,10 +1,10 @@
 import { Header } from '../utils/header';
 import { Experience } from './threedanimation';
 import { Canvas } from "@react-three/fiber";
-import './datasethomepage.css';
+import './datahomepage.css';
 
 
-export const DatasetHomepage = () => {
+export const DataHomepage = () => {
     return (
       <div className='dataset-homepage'>
         <Header />

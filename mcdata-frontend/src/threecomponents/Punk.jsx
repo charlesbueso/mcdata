@@ -15,8 +15,9 @@ export function Punk({hovered, ...props}) {
   useEffect(() => {
     const anim = hovered ? "Wave":"Idle";
     actions[anim].reset().fadeIn(0.5).play();
-    return () => actions[anim].fadeOut(0.5);
-  }, [hovered]);
+    const fade = actions[anim].fadeOut(0.5);
+    return () => fade;
+  }, [hovered, actions]);
 
   return (
     <group ref={group} {...props} dispose={null}>

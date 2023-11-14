@@ -23,7 +23,7 @@
     position: fixed;
     margin: 0 auto;
     text-align: left;
-    font-size: 17px;
+    font-size: 21px;
   }
 
   .explore-button:hover {
@@ -32,6 +32,7 @@
 
 
 .body-text {
+    font-family: 'Anton', sans-serif;
     position: absolute;
     height: 50vh;
     text-align: left;
@@ -41,11 +42,12 @@
     align-items: center;
     justify-content: flex-start;
     color: #ffffff;
-    font-size: 1.40rem; /*proportionally increase body-text size*/
+    font-size: 1.50rem; /*proportionally increase body-text size*/
 }
   
   .body-text p {
-    font-size: 20px;
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
   }
 
 .homepage {
