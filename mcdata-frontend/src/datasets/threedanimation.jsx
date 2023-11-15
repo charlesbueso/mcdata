@@ -63,7 +63,7 @@ export const Experience = () => {
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Adventurer scale={1.1} position-y={-0.9} hovered={hovered === "mark"}/>
+                <Adventurer scale={1.1} position-y={-1} hovered={hovered === "mark"}/>
         </MonsterStage>
 
         <MonsterStage 
@@ -76,7 +76,7 @@ export const Experience = () => {
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Punk scale={1.1} position-y={-0.9} hovered={hovered === "charles"}/>
+                <Punk scale={1.1} position-y={-1} hovered={hovered === "charles"}/>
         </MonsterStage>
 
         <MonsterStage 
@@ -89,7 +89,7 @@ export const Experience = () => {
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Witch scale={1.1} position-y={-0.9} hovered={hovered === "briz"}/>
+                <Witch scale={1.1} position-y={-1} hovered={hovered === "briz"}/>
         </MonsterStage>
         </>
     )
