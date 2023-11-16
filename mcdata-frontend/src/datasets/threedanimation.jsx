@@ -25,14 +25,14 @@ export const Experience = () => {
             controlsRef.current.setLookAt(
                 0,
                 0,
-                7,
+                8,
                 targetPosition.x,
                 targetPosition.y,
                 targetPosition.z,
                 true,
             )
-            controlsRef.current.minDistance = 7;
-            controlsRef.current.maxDistance = 7; //9
+            controlsRef.current.minDistance = 8;
+            controlsRef.current.maxDistance = 8; //9
         } else {
             controlsRef.current.setLookAt(
                 0,
@@ -58,6 +58,7 @@ export const Experience = () => {
         <MonsterStage 
             texture={"/textures/psychedelic_ai.jpg"} 
             name="mark" 
+            position-y={.1}
             color={"#07194c"} 
             active={active}
             setActive={setActive}

@@ -15,10 +15,26 @@ export const DataHomepage = () => {
         <Canvas shadows camera={{ position:[0,0,10], fov:30}}>
           <Experience />
         </Canvas>
-      </div>
-      {/* <div className='text-section'>
-        <p>This is the text content that will appear below the canvas animation.</p>
-      </div> */}
+        <div className='data-marketplace-features'>
+          
+          <div className='elevated-bar'>
+          <h1 className='datasets-title'>Become a <span>Chunk</span></h1>
+          
+          <div className='feature-box'>
+            <i className='fa-solid fa-users'></i>
+            <p>1. Collect data that is interesting to you</p>
+          </div>
+          <div className='feature-box'>
+            <i className='fa-solid fa-chart-line'></i>
+            <p>2. Upload your dataset to mcdata</p>
+          </div>
+          <div className='feature-box'>
+            <i className='fa-solid fa-cloud-download'></i>
+            <p>3. Get paid</p>
+          </div>
+          </div>
+          </div>
+        </div>
       </>
     );
   };

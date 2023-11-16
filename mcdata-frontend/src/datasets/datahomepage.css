@@ -17,29 +17,80 @@
 }
 
 .grey-triangles {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 18%;
-    height: 200vh;
+    height: 101vh;
     background-color: #131313;
     z-index: 101;
 }
 
 .grey-rectangle {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     width: 18%;
-    height: 200vh;
+    height: 101vh;
     background-color: #131313;
     z-index: 101;
 }
 
-.text-section {
-    color: azure;
-    position: fixed;
-    bottom: 100%; /* Positions it below the viewport */
+.data-marketplace-features {
+    position: absolute;
+    bottom: -30%; /* Occupies the lower half of the viewport */
     width: 100%;
     text-align: center;
-}
+    transform: translateY(50%); /* Vertically center the content */
+  }
+
+.elevated-bar {
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+    height: 400px;
+    background-color: #111111;
+    box-shadow: 0 0 15px black;
+    padding: 5px;
+    justify-content: space-between 10px;
+    display: flex;
+  }
+  
+  .data-marketplace-features .datasets-title {
+    font-family: 'Garamond';
+    font-size: 60px; /* Adjust font size as needed */
+    color: azure;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .data-marketplace-features .datasets-title span {
+    font-family: 'Bradley Hand ITC', cursive;
+    font-size: 70px;
+    font-weight: 600;
+    color: #00ff00;
+  }
+
+  .feature-box {
+    text-align: center;
+    margin: 10px 10px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #111111;
+  }
+  
+  .feature-box i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #007bff;
+  }
+  
+  .feature-box p {
+    font-family: 'Garamond';
+    font-size: 20px;
+    line-height: 1.5;
+    color: white;
+  }
+
