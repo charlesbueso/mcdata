@@ -25,14 +25,14 @@ export const Experience = () => {
             controlsRef.current.setLookAt(
                 0,
                 0,
-                7,
+                8,
                 targetPosition.x,
                 targetPosition.y,
                 targetPosition.z,
                 true,
             )
-            controlsRef.current.minDistance = 7;
-            controlsRef.current.maxDistance = 7; //9
+            controlsRef.current.minDistance = 8;
+            controlsRef.current.maxDistance = 8; //9
         } else {
             controlsRef.current.setLookAt(
                 0,
@@ -58,12 +58,13 @@ export const Experience = () => {
         <MonsterStage 
             texture={"/textures/psychedelic_ai.jpg"} 
             name="mark" 
+            position-y={.1}
             color={"#07194c"} 
             active={active}
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Adventurer scale={1.1} position-y={-0.9} hovered={hovered === "mark"}/>
+                <Adventurer scale={1.1} position-y={-1} hovered={hovered === "mark"}/>
         </MonsterStage>
 
         <MonsterStage 
@@ -76,7 +77,7 @@ export const Experience = () => {
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Punk scale={1.1} position-y={-0.9} hovered={hovered === "charles"}/>
+                <Punk scale={1.1} position-y={-1} hovered={hovered === "charles"}/>
         </MonsterStage>
 
         <MonsterStage 
@@ -89,7 +90,7 @@ export const Experience = () => {
             setActive={setActive}
             hovered={hovered}
             setHovered={setHovered}>
-                <Witch scale={1.1} position-y={-0.9} hovered={hovered === "briz"}/>
+                <Witch scale={1.1} position-y={-1} hovered={hovered === "briz"}/>
         </MonsterStage>
         </>
     )
