@@ -38,59 +38,69 @@
 
 .data-marketplace-features {
     position: absolute;
-    bottom: -30%; /* Occupies the lower half of the viewport */
+    bottom: -32%; /* Occupies the lower half of the viewport */
     width: 100%;
     text-align: center;
     transform: translateY(50%); /* Vertically center the content */
   }
 
 .elevated-bar {
-    width: 80%;
-    margin-right: 10%;
-    margin-left: 10%;
-    height: 400px;
+    width: 97%;
+    /* margin-right: 10%;
+    margin-left: 10%; */
+    margin-right: 2%;
+    margin-left: 1%;
+    height: 450px;
     background-color: #111111;
     box-shadow: 0 0 15px black;
     padding: 5px;
     justify-content: space-between 10px;
-    display: flex;
+    display: row;
   }
   
-  .data-marketplace-features .datasets-title {
+ .datasets-title {
     font-family: 'Garamond';
     font-size: 60px; /* Adjust font size as needed */
     color: azure;
     margin-left: 20%;
     margin-right: 20%;
     text-align: center;
-    padding: 10px;
   }
   
-  .data-marketplace-features .datasets-title span {
+  .datasets-title span {
     font-family: 'Bradley Hand ITC', cursive;
     font-size: 70px;
     font-weight: 600;
     color: #00ff00;
   }
 
-  .feature-box {
-    text-align: center;
-    margin: 10px 10px;
-    padding: 20px;
-    border-radius: 5px;
+  .text-boxes {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .text-box {
+    width: 30%;
+    margin: 0 10px;
+    padding: 25px;
     background-color: #111111;
   }
-  
-  .feature-box i {
-    font-size: 40px;
-    margin-bottom: 10px;
-    color: #007bff;
+
+  .text-box img {
+    display: block;
+    margin: 0 auto;
+    width: 17%;
   }
   
-  .feature-box p {
-    font-family: 'Garamond';
-    font-size: 20px;
-    line-height: 1.5;
+  .text-box-title {
+    font-size: 30px;
+    font-weight: bold;
     color: white;
+    margin-bottom: 10px;
+  }
+  
+  .text-box-content {
+    color: white;
+    font-size: 18px;
   }
 
