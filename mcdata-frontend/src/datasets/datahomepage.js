@@ -42,6 +42,16 @@ const HowToBox = () => {
 };
 
 
+const SearchBar = () => {
+  return (
+    <div className="search-container">
+      <input type="text" className="search-bar" placeholder='Search for datasets, e.g. "Dreams from people of different cultures", "Labelled images of rare diseases"' />
+      <button className="search-button">GO</button>
+    </div>
+  );
+};
+
+
 export const DataHomepage = () => {
     return (
       <>
@@ -53,6 +63,7 @@ export const DataHomepage = () => {
           <Experience />
         </Canvas>
         <HowToBox />
+        <SearchBar />
         </div>
       </>
     );
